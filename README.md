@@ -33,3 +33,25 @@ DB1 Page and DB2 Page options
 All items page 
 - shows items in order of ID and their status on both databases
 - can search for item by ID
+
+## setup
+I started a docker container for PostgreSQL as described at https://www.commandprompt.com/education/how-to-create-a-postgresql-database-in-docker/
+
+I created a database named "demo" and a database named "demo2"
+
+I tested with the following :main in src/shared/config/defaults.edn
+
+       {:main {:flyway/migrate?          false
+           :flyway/migrations        ["classpath:config/sql_migrations"]
+           :hikaricp/config          {"dataSourceClassName"     "org.postgresql.ds.PGSimpleDataSource"
+                                      "dataSource.serverName"   "localhost"
+                                      "dataSource.user"         "postgres"
+                                      "dataSource.password"         "pass123"
+                                      "dataSource.databaseName" "demo2"}
+           :sql/vendor               :postgresql
+           :sql/auto-create-missing? true
+           :sql/schema               :production}}
+
+the only difference for "demo" being 
+
+      "dataSource.databaseName" "demo2"
