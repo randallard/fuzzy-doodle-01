@@ -55,3 +55,7 @@ I tested with the following :main in src/shared/config/defaults.edn
 the only difference for "demo" being 
 
       "dataSource.databaseName" "demo2"
+
+For each database - I started the CLJ REPL and ran the migration
+
+
